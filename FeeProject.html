@@ -5,83 +5,336 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/0c7e1252ef.js" crossorigin="anonymous"></script>
     <title>TO Do LIST</title>
+
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+        .pe {
+            position: sticky;
+            top: 0px;
+
+        }
+
         .left-align {
             float: left;
-            width:100%;
+            width: 100%;
         }
+
         ul {
             display: flex;
             justify-content: center;
         }
+
         ul li {
             margin-right: 20px;
             text-align: center;
         }
-        .main
-        {
-            height:300px;
-            width:500px;
-            padding:50px;
-            float:left;
-            }
-       
+
+        .main {
+            height: 300px;
+            width: 500px;
+            padding: 50px;
+            float: left;
+        }
+
+        .pe {
+            background-color: rgb(255, 232, 232);
+
+        }
+
+        .fl li {
+            display: flex;
+            margin-top: 0px;
+            height: 40px;
+            width: 240px;
+            flex-direction: row-reverse;
+            align-content: end;
+            font-size: 20px;
+        }
+
+        .center-align {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .form-box {
+            width: 90%;
+            max-width: 450px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%-50%);
+            background-color: rgba(232, 159, 66, 0.38);
+            padding: 50px 60px 70px;
+            text-align: center;
+            margin-left: 10px;
+            margin-top: 830px;
+            z-index: 10;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .form-box video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: blur(2px);
+        }
+
+        .form-box h2 {
+            font-size: 30px;
+            margin-bottom: 60px;
+            color: rgb(151, 11, 151);
+            position: relative;
+        }
+
+        .form-box h2::after {
+            content: '';
+            width: 30px;
+            height: 40px;
+            border-radius: 3px;
+            text-underline-offset: red;
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .input-field {
+            margin: 15px 0;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            max-height: 65px;
+            transition: max-height 0.5s;
+            overflow: hidden;
+        }
+
+        input {
+            width: 100%;
+            color: black;
+            border: 0;
+            outline: 0;
+            padding: 18px 15px;
+        }
+
+        .input-field i {
+            margin-left: 15px;
+            color: #0f0e0e;
+        }
+
+        .btn-field {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-field button {
+            flex-basis: 48%;
+            background: #874ce7;
+            color: white;
+            height: 40px;
+            border-radius: 20px;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            transition: background 1s;
+        }
+
+        .pe button {
+            background: #e74c4c4a;
+            font-weight: 599;
+
+        }
+
+        .input-group {
+            height: 280px;
+        }
+
+        .btn-field button.disable {
+            background: #eaeaea;
+            color: #555;
+        }
+
+        .form-box input[type="text"] {
+            background-color: #c3def6;
+        }
+
+        .form-box input[type="email"] {
+            background-color: #ffe6bd;
+        }
+
+        .form-box input[type="password"] {
+            background-color: #e1c2ff;
+        }
+
+        #createBtn {
+            flex-basis: 48%;
+            background: #874ce7;
+            color: white;
+            height: 60px;
+            border-radius: 20px;
+            border: 0;
+            outline: 0;
+            cursor: pointer;
+            transition: background 1s;
+            width: 260px;
+        }
     </style>
 </head>
 
 <body>
-    <h2 style="display: flex; align-items: center;color: red; margin-left: 50px;">
-       <img src="me.gif" height="100px" width="100px">ToDoList</h2>
-        <div style="float:right; margin-top: -80px;margin-right: 300px;">
-            <a href="https://drive.google.com/file/d/1fiI039O6aiDGCIBRmRkVTpxSp2c6kB6_/view?usp=sharing" target="_blank"><button>Notes</button></a>
-            <a href="https://github.com/Harry30363/FrontEndEngineeringProject/blob/7f36c8c8352f4cde4afe467df65f5c3ee77861eb/FeeProject.html" target="_blank"><button>ProjectCode</button></a>
-            <a href="#Features"><button>Features</button></a>
-            <a href="#login"><button>Login</button></a>
-            <a href="#signin"><button>SignIn</button></a>
-        </div>
-    
 
-    <h1 style="text-align: center;color: rgb(71, 74, 235); font-size: 48px;">Organize your<div></div>
-        work and life, finally.<div></div>
-    </h1>
-    
-    <h1 style="text-align: center;">Become focused, organized, and calm with Todoist.</h1>
-        
+    <h2 class="pe" style="display: flex; align-items: center;color: red; margin-left: 4px;">
+        <img src="me.gif" height="100px" width="100px">ToDoList
+    </h2>
+    <div class="pe" style="float:right; margin-top: -80px;margin-right: 70px;">
+        <a href="https://drive.google.com/file/d/1fiI039O6aiDGCIBRmRkVTpxSp2c6kB6_/view?usp=sharing"
+            target="_blank"><button>Notes</button></a>
+        <a href="https://github.com/Harry30363/FrontEndEngineeringProject/blob/7f36c8c8352f4cde4afe467df65f5c3ee77861eb/FeeProject.html"
+            target="_blank"><button>ProjectCode</button></a>
+        <a href="#Features"><button>Features</button></a>
+        <a href="#login"><button>Login</button></a>
+        <a href="#signin"><button>SignIn</button></a>
+        <a href="#signin"><i style="margin-left: 10px;" class="fa-solid fa-user"></i></a>
+    </div>
+
+
+    <h3 style="text-align: center;color: rgb(71, 74, 235); font-size: 45px;">Organize your <br>
+        work and life, finally.
+    </h3>
+
+    <h1 style="text-align: center;">Become focused, organized, and calm with TodoList.</h1>
+    <a href="index.html" style=" text-align:center; margin-left: 610px;"><button type="button" id="createBtn"
+            style="font-weight: 999;">Create Your To-Do List</button> </a>
     <div style="text-align: center;">
         <img src="https://todoist.com/_next/static/images/bg-left_ec42cae325f6e50083f84e73af60ebc0.webp"
             alt="Image description" style="width: 22%; height: auto;">
         <img src="https://res.cloudinary.com/imagist/image/fetch/f_auto/q_auto/c_scale,w_1536/https://todoist.com/static/home/hero/illustration_w_2026.png?_a=ATCqVcY0"
             alt="Image description" style="width: 50%; height: auto;">
-            <img src="https://todoist.com/_next/static/images/bg-right_e970a806f622dc0514e793511e4fdf0c.webp"
+        <img src="https://todoist.com/_next/static/images/bg-right_e970a806f622dc0514e793511e4fdf0c.webp"
             alt="Image description" style="width: 22%; height: auto;">
-            
     </div>
     <img src="https://todoist.com/_next/static/images/bg-bottom_a7658f3d5a0484f945cf163403fa36d4.webp"
-            alt="Image description" style="width: 100%; height: auto;">
-           <div class="main" style="text-align: left;margin-left: 200px;right:0px"> 
-                    <h3>Get more done</h3>
-                    <h2>Add your tasks.<div></div> Organise your life.<div></div> Achieve more every day.</h2>
-                    <h4>Add tasks like “Read work emails every day at 10am”<br/>to fill your to-do list in seconds using Todoist’s<div></div> powerful natural language recognition and recurring dates.</h4>
+        alt="Image description" style="width: 100%; height: 710px;">
+
+    <div class="form-box">
+        <video autoplay loop muted>
+            <source src="background-video.mp4" type="video/mp4">
+        </video>
+        <h2 id="title">SignUp</h2>
+        <form>
+            <div class="input-group">
+
+                <div class="input-field" id="nameField">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Name">
                 </div>
-              <div class="main">  <img src="https://todoist.com/static/home/features/get-more-done-1008.webp"
-                     alt="Image description" style="width: 80%; height: 350px; text-align: center;">
+
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Email">
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password">
+                </div>
+                <p style="font-weight: 1000;">Forgot Password <a href="#">Click Here!</a></p>
+
             </div>
-               
+            <div class="btn-field">
+                <button type="button" id="signupBtn">SignUp</button>
+                <button type="button" class="disable" id="signinBtn">SignIn</button>
+
+            </div>
+        </form>
+    </div>
+    <script>
+        let signupBtn = document.getElementById("signupBtn");
+        let signinBtn = document.getElementById("signinBtn");
+        let nameField = document.getElementById("nameField");
+        let title = document.getElementById("title");
+
+        signinBtn.onclick = function () {
+            nameField.style.maxHeight = "0";
+            title.innerHTML = "Sign In";
+            signupBtn.classList.add("disable");
+            signinBtn.classList.remove("disable");
+        }
+
+        signupBtn.onclick = function () {
+            nameField.style.maxHeight = "60px";
+            title.innerHTML = "Sign Up";
+            signupBtn.classList.remove("disable");
+            signinBtn.classList.add("disable");
+        }
+    </script>
+
+    <div class="main" style="text-align: left;margin-left: 200px;right:0px;margin-top: 50px;">
+        <h2>Get more done</h2>
+        <h2>Add your tasks.<div></div> Organise your life.<div></div> Achieve more every day.</h2>
+        <h3 style="font-family: 'Dancing Script', cursive; font-size:large;">Add tasks like “Read work emails every day
+            at 10am”<br />to fill your to-do list in seconds using TodoList's
+            <div></div> powerful natural language recognition and recurring dates.
+        </h3>
+    </div>
+    <div class="main"> <img src="https://todoist.com/static/home/features/get-more-done-1008.webp"
+            alt="Image description" style="width: 80%; height: 350px; text-align: center; margin-top: -100;">
+    </div>
 
     <div class="left-align">
         <hr style="border: 0; height: 1px; background-color: black; margin-bottom: 0;">
-        <p style="font-weight:bold;">Join millions of people who organize work and life with Todoist.</p>
-    
-    <ul>
-        <li><a href="https://drive.google.com/file/d/1fiI039O6aiDGCIBRmRkVTpxSp2c6kB6_/view?usp=sharing" target="_blank">Notes</a></li>
-        <li><a href="https://github.com/Harry30363/FrontEndEngineeringProject/blob/7f36c8c8352f4cde4afe467df65f5c3ee77861eb/FeeProject.html" target="_blank">ProjectCode</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#about-us">About Us</a></li>
-        <li><a href="#contact-us">Contact Us</a></li>
-    </ul></div>
+        <h2 style="display: flex; align-items: center;color: rgb(125, 82, 82); margin-left: 58px;">
+            <img src="me.gif" height="80px" width="80px">ToDoList
+        </h2>
+        <p style="font-weight:bold;margin-left: 60px;font-size:x-large;font-family: 'Dancing Script', cursive;">Join
+            millions of people who organize<br> work and life with Todoist.</p>
+
+        <ul class="fl">
+            <div>
+                <li style="margin-left: 349px;margin-top: -153px;"><a>Features</a></li>
+                <p style="margin-left: 521px;margin-top: 10px;font-size: 18px;"><a href="#How It Work">How It Works</a>
+                </p>
+                <p style="margin-left: 521px;margin-top: 10px;font-size: 18px;"><a href="#For Teams">For Teams</a></p>
+                <p style="margin-left: 521px;margin-top: 10px;font-size: 18px;"><a href="#Pricing">Pricing</a></p>
+                <p style="margin-left: 521px;margin-top: 10px;font-size: 18px;"><a href="#Templats">Templats</a></p>
+            </div>
+            <div>
+                <li style="margin-left:21px;margin-top: -152px;"><a>Resources</a></li>
+                <p style="margin-left: 180px;margin-top: 7px;font-size: 18px;"><a
+                        href="https://github.com/Harry30363/FrontEndEngineeringProject/blob/7f36c8c8352f4cde4afe467df65f5c3ee77861eb/FeeProject.html"
+                        target="_blank">ProjectCode</a></p>
+            </div>
+            <p style="margin-left: -101px;margin-top: -66px;font-size: 18px;"><a
+                    href="https://drive.google.com/file/d/1fiI039O6aiDGCIBRmRkVTpxSp2c6kB6_/view?usp=sharing"
+                    target="_blank">Notes</a></p>
+            <p style="margin-left: -43px;margin-top: -26px;font-size: 18px;"><a href="#Chanel Partners">Chanel
+                    Partners</a></p>
+            <p style="margin-left: -113px;margin-top: 14px;font-size: 18px;"><a href="#Status">Status</a></p>
+            <div>
+                <li style="margin-top: -153px;margin-left: 59px;"><a>Company</a></li>
+                <p style="margin-left: 222px;margin-top: 8px;font-size: 18px;"><a href="#contact-us">About Us</a></p>
+                <p style="margin-left: 222px;margin-top: 18px;font-size: 18px;"><a href="#contact-us">Contact Us</a></p>
+            </div>
+            <li style="margin-top: -156px;margin-left: -166px;"><a
+                    href="https://github.com/Harry30363/FrontEndEngineeringProject/blob/7f36c8c8352f4cde4afe467df65f5c3ee77861eb/FeeProject.html;"><img
+                        style="height:25px;" src="githublogo.png" /> </a></li>
+            <li style="margin-top: -105px;margin-left: -257px;"><a href="https://www.twitter.com/"><img
+                        style="height:25px;" src="twitterlogo.png" /></a></li>
+            <li style="margin-top: -62px;margin-left: -260px;"><a href="https://www.facebook.com/"><img
+                        style="height:25px;" src="facebook.jpeg" /></a></li>
+            <li style="margin-top: -9px;margin-left: -257px;"><a href="https://www.instagram.com/"><img
+                        style="height:25px;" src="instagram.jpeg" /></a></li>
+        </ul>
+    </div>
 </body>
 
 </html>
-
